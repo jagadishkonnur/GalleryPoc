@@ -1,0 +1,5 @@
+<h3 class="text-center">{{title}}</h3>
+
+  <!-- <p>{{ item.title }}</p>
+  <img [src]="item.media.m" [alt]="item.title"> -->
+  <app-gallery-item *ngFor="let item of galleryItems"[item]=item></app-gallery-item>

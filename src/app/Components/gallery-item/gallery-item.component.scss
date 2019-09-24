@@ -1,0 +1,27 @@
+
+
+.custom-card{ 
+    height: auto;
+    margin-bottom: 20px;
+    border: 1px solid;
+    padding: 10px;
+    img {
+        height: 220px;
+        width: 100%
+    }
+    .tags {
+        height: 60px;
+        overflow: hidden;
+    }
+    .author {
+        overflow: hidden;
+    }
+    .card-description {
+        height: 160px;
+        overflow: hidden;
+        img {
+            width: 100px !important;
+            height: 50px !important;
+        }
+    }
+}
