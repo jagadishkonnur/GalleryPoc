@@ -22,8 +22,8 @@ export class GalleryComponent implements OnInit {
         this.count++;
         console.log('count before:', this.galleryItems.length);
         // tslint:disable-next-line:max-line-length
-        if ((this.count * 3) <= this.fullData.length) {
-          this.galleryItems = this.fullData.slice(0, this.count*3);
+        if ((this.count * 4) <= this.fullData.length) {
+          this.galleryItems = this.fullData.slice(0, this.count * 4);
         }
         console.log('count after:', this.galleryItems.length);
       }
@@ -39,7 +39,7 @@ export class GalleryComponent implements OnInit {
       this.title = data.title;
       this.fullData = data.items;
       console.log('1st call:', this.fullData.length);
-      this.galleryItems = data.items.splice(0, this.count*3 );
+      this.galleryItems = data.items.splice(0, this.count * 4);
     });
   }
 

@@ -9,7 +9,7 @@ import { Gallery } from 'src/app/Models/gallery.model';
 
 })
 export class GalleryItemComponent implements OnInit {
-@Input() item: Gallery;
+@Input() item: any;
   constructor() { }
 
   ngOnInit() {
