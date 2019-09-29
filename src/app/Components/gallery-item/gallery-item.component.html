@@ -1,26 +1,16 @@
-<!-- <div class='col-sm-4'>
-  <div class="card" >
-    <img class="card-img-top img-fluid" [src]="item.media.m" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{item.title}}</h5>
-       <p class="card-text" [innerHTML]='item.description'></p> 
-    </div>
-  </div>
-</div> -->
-
 <div class="col-xs-12 col-sm-6 col-md-4">
-  <div class="card custom-card">
+  <div class="card custom-card ">
     <div class="card-body text-center">
       <img class="img-fluid" [src]="item.media.m"
           alt="card image">
+      <div class="overleyText">
+          {{item.title}}
+      </div>
       <p class="author">Updated by {{item.author}} on {{item.date_taken}}</p>
       <div class="card-description">
           <p class="card-text" [innerHTML]='item.description'></p>
       </div>
-    <hr>
-    <div class="tags">{{item.tags}}</div>
-  
-      <!-- <p class="card-text" [innerHTML]='item.description'></p>  -->
+    <div class="tags">{{(item.tags) ? item.tags : "No Tags"}}</div>  
     </div>
   </div>
 </div>

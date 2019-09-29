@@ -8,39 +8,49 @@ import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  count: number = 1;
   title: string;
   galleryItems: Gallery[] = [];
   fullData: Gallery[] = [];
-  constructor(public el: ElementRef, private galleryService: GalleryService) {
+  curScrollPos = 0;
+  endReached = false;
+  debug: boolean;
+  constructor(private galleryService: GalleryService) {
 
   }
-  @HostListener('window:scroll', [])
-    onScroll(): void {
-      if (this.bottomReached()) {
-        console.log('Yes');
-        this.count++;
-        console.log('count before:', this.galleryItems.length);
-        // tslint:disable-next-line:max-line-length
-        if ((this.count * 4) <= this.fullData.length) {
-          this.galleryItems = this.fullData.slice(0, this.count * 4);
-        }
-        console.log('count after:', this.galleryItems.length);
-      }
-    }
-    bottomReached(): boolean {
-      return (window.scrollY + 150 > window.innerHeight);
-      // return (window.innerHeight + window.scrollY) >= 350;
-      // return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-    }
+
   ngOnInit() {
+    this.debug = false;
+    this.getData();
+  }
+  getData() {
     this.galleryService.getGalleryItems().subscribe((data: any) => {
       console.log(data);
       this.title = data.title;
       this.fullData = data.items;
       console.log('1st call:', this.fullData.length);
-      this.galleryItems = data.items.splice(0, this.count * 4);
+      if (this.fullData.length >= 4 ) {
+        this.fullData.splice(0, 4).forEach(item => {
+          this.galleryItems.push(item);
+        });
+      }
     });
+  }
+  updateScrollPos(e) {
+    // console.log(e);
+    this.curScrollPos = e.pos;
+    this.endReached = e.endReached;
+    if (this.endReached) {
+      // this.customLoad = true;
+      console.log('Reached End');
+      if (this.fullData.length >= 4) {
+        // this.galleryItems = this.fullData.splice(0,4);
+        this.fullData.splice(0, 4).forEach(item => {
+          this.galleryItems.push(item);
+        });
+      } else {
+        this.getData();
+      }
+    }
   }
 
 }

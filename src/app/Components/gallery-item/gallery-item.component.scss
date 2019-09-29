@@ -1,24 +1,44 @@
-
-
 .custom-card{ 
     height: auto;
     margin-bottom: 20px;
     border: 1px solid;
-    padding: 10px;
     img {
         height: 220px;
         width: 100%
     }
+    .overleyText {
+        position: absolute;
+        z-index: 999;
+        padding-left: 30px;
+        left: 0;
+        right: 0;
+        top: 33%; /* Adjust this value to move the positioned div up and down */
+        text-align: left;
+        width: 92%; /* Set the width of the positioned div */
+        color: white;
+        word-break: break-all;
+        vertical-align: text-bottom;
+    }
     .tags {
         height: 60px;
         overflow: hidden;
+        text-align: left;
+        word-break: break-all;
+        border-top: #ddd solid 1px;
+        padding-left: 10px;
     }
     .author {
         overflow: hidden;
+        text-align: left;
+        word-break: break-all;
+        padding-left: 10px;
     }
     .card-description {
-        height: 160px;
+        height: 150px;
         overflow: hidden;
+        text-align: left;
+        word-break: break-all;
+        padding-left: 10px;
         img {
             width: 100px !important;
             height: 50px !important;

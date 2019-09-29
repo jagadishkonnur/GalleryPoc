@@ -1,5 +1,14 @@
-<h3 class="text-center">{{title}}</h3>
-
-<!-- <p>{{ item.title }}</p>
-  <img [src]="item.media.m" [alt]="item.title"> -->
-<app-gallery-item *ngFor="let item of galleryItems" [item]=item></app-gallery-item>
+<div id="th-infinite-scroll-tracker" style="overflow-y:scroll; height: 650px;" scrollTracker
+  (scrolled)="updateScrollPos($event)">
+  <div *ngIf="debug" style="position: absolute; top: 0; right: 10px; width: 200px; background: beige;z-index: 100">
+      <strong>For debugging purpose only</strong><br/>
+      <strong>Current scroll position: </strong>{{curScrollPos}}<br/>
+      <strong>Count: </strong>{{galleryItems.length}}<br/>
+      <strong>End reached? </strong>{{ endReached ? 'yes': 'no' }}
+    </div>
+  <div scrollTracker (scrolled)="updateScrollPos($event)">
+      <h3 class="text-center">{{title}}</h3>
+  
+      <app-gallery-item *ngFor="let item of galleryItems" [item]=item></app-gallery-item>
+  </div>  
+</div>

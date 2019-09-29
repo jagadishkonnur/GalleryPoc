@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GalleryItemComponent } from './Components/gallery-item/gallery-item.component';
 import { GalleryComponent } from './Components/gallery/gallery.component';
+import { ScrollTracker } from './Directives/ScrollTracker.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     GalleryItemComponent,
-    GalleryComponent
+    GalleryComponent,
+    ScrollTracker
   ],
   imports: [
     BrowserModule,

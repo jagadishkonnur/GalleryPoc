@@ -30,11 +30,11 @@ describe('GalleryItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('GalleryItemComponent should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should check data exist', () => {
+  it('GalleryItemComponent should check data exist', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('.author').textContent).toContain('nobody@flickr.com ("bigyahu")');
     expect(compiled.querySelector('.tags').textContent).toContain('ifttt instagram');

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Gallery } from 'src/app/Models/gallery.model';
 
 @Component({
   selector: 'app-gallery-item',

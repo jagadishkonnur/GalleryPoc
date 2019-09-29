@@ -1,12 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { HttpClient, JsonpClientBackend } from '@angular/common/http';
 import { GalleryService } from './gallery.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClientJsonpModule, HttpBackend, JsonpClientBackend } from '@angular/common/http';
 
-describe('GalleryService', () => {
-  let httpMock: HttpTestingController;
+describe('Service: GalleryService', () => {
   let service: GalleryService;
+  let httpTestingController: HttpTestingController;
+
   const res = {
     title: 'Uploads from everyone',
     link: 'https:\/\/www.flickr.com\/photos\/',
@@ -25,34 +28,18 @@ describe('GalleryService', () => {
       tags: 'ifttt instagram'
     }]
   };
-  // beforeEach(() => {
-  //   // TODO: spy on other methods too
-  //   httpClientSpy = jasmine.createSpyObj('HttpClient', ['jsonp']);
-  // });
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      // Use the HttpBackend instead of the JsonpClientBackend
-      providers: [GalleryService, { provide: JsonpClientBackend, useExisting: HttpBackend }]
+        imports: [HttpClientTestingModule],
+        providers: [GalleryService, { provide: JsonpClientBackend }]
     });
-
+    // Returns a service with the MockBackend so we can test with dummy responses
     service = TestBed.get(GalleryService);
-    httpMock = TestBed.get(HttpTestingController);
+    // Inject the http service and test controller for each test
+    httpTestingController = TestBed.get(HttpTestingController);
   });
-  beforeEach(() => TestBed.configureTestingModule({}));
-
-  xit('should be created', () => {
-    // tslint:disable-next-line:no-shadowed-variable
-    expect(service).toBeTruthy();
-  });
-
-  xit('should be jsonp', () => {
-    // tslint:disable-next-line:no-shadowed-variable
-    const service: GalleryService = TestBed.get(GalleryService);
-    service.getGalleryItems().subscribe(data => {
-      expect(data).toEqual(res);
-    });
-    const req = httpMock.expectOne(request => request.url === 'http://localhost/');
-    expect(req.request.method).toBe('JSONP');
+  afterEach(() => {
+    // After every test, assert that there are no more pending requests.
+    httpTestingController.verify();
   });
 });

@@ -1,4 +1,3 @@
-
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GalleryComponent } from './gallery.component';
@@ -123,16 +122,23 @@ describe('GalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('GalleryComponent should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('initially only 4 items has to be loaded', () => {
+  it('GalleryComponent initially only 4 items has to be loaded', () => {
     expect(component.galleryItems.length).toBe(4);
   });
 
-  it('should check data exist', () => {
+  it('GalleryComponent should check data exist', () => {
     const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.text-center').textContent).toContain(res.title);
+  });
+
+  it('GalleryComponent should check data exist after scroll', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    window.scrollTo(0, 700);
+    fixture.detectChanges();
     expect(compiled.querySelector('.text-center').textContent).toContain(res.title);
   });
 });
