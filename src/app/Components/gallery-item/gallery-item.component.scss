@@ -1,5 +1,6 @@
 .custom-card{ 
-    height: auto;
+    height: 460px;
+    // height: auto;
     margin-bottom: 20px;
     border: 1px solid;
     img {
@@ -32,6 +33,7 @@
         text-align: left;
         word-break: break-all;
         padding-left: 10px;
+        height: 36px;
     }
     .card-description {
         height: 150px;

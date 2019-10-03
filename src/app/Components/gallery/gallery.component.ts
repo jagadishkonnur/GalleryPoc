@@ -24,27 +24,22 @@ export class GalleryComponent implements OnInit {
   }
   getData() {
     this.galleryService.getGalleryItems().subscribe((data: any) => {
-      console.log(data);
       this.title = data.title;
       this.fullData = data.items;
-      console.log('1st call:', this.fullData.length);
-      if (this.fullData.length >= 4 ) {
-        this.fullData.splice(0, 4).forEach(item => {
+      if (this.fullData && this.fullData.length > 0 ) {
+        this.fullData.splice(0, this.fullData.length).forEach(item => {
           this.galleryItems.push(item);
         });
       }
     });
   }
   updateScrollPos(e) {
-    // console.log(e);
     this.curScrollPos = e.pos;
     this.endReached = e.endReached;
     if (this.endReached) {
-      // this.customLoad = true;
       console.log('Reached End');
-      if (this.fullData.length >= 4) {
-        // this.galleryItems = this.fullData.splice(0,4);
-        this.fullData.splice(0, 4).forEach(item => {
+      if (this.fullData && this.fullData.length > 0 ) {
+        this.fullData.splice(0, this.fullData.length).forEach(item => {
           this.galleryItems.push(item);
         });
       } else {

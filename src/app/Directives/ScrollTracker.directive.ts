@@ -14,8 +14,8 @@ import { Directive, HostListener, Output, EventEmitter} from '@angular/core';
       const tracker = event.target;
       let endReached = false;
       const limit = tracker.scrollHeight - tracker.clientHeight;
-
-      if (event.target.scrollTop === limit) {
+      console.log('Tracking: ', limit, Math.round(event.target.scrollTop));
+      if (Math.round(event.target.scrollTop) === limit) {
         endReached = true;
       }
 
