@@ -126,8 +126,8 @@ describe('GalleryComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('GalleryComponent initially only 4 items has to be loaded', () => {
-    expect(component.galleryItems.length).toBe(4);
+  it('GalleryComponent initially all items has to be loaded', () => {
+    expect(component.galleryItems.length).toBe(res.items.length);
   });
 
   it('GalleryComponent should check data exist', () => {

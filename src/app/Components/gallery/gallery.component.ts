@@ -37,7 +37,6 @@ export class GalleryComponent implements OnInit {
     this.curScrollPos = e.pos;
     this.endReached = e.endReached;
     if (this.endReached) {
-      console.log('Reached End');
       if (this.fullData && this.fullData.length > 0 ) {
         this.fullData.splice(0, this.fullData.length).forEach(item => {
           this.galleryItems.push(item);
