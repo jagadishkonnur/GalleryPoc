@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-gallery-item',
@@ -7,11 +7,8 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 
 })
-export class GalleryItemComponent implements OnInit {
+export class GalleryItemComponent {
 @Input() item: any;
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
